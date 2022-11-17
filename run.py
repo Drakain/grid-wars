@@ -74,7 +74,7 @@ def attempt_ship_placement(row, col, direction, length):
       
 def generate_grid():
     """
-    Generates a 10x10 grid and attempts to randomly place down different types of ships at different locations
+    Generates a 10x10 grid and attempts to randomly place down different types of ships at different locations.
     """
 
     global grid
@@ -108,8 +108,29 @@ def generate_grid():
 
 def show_grid():
     """
-    Will show the grid with rows A-J and columns 0-9
+    Will show the grid with rows A-J and columns 0-9.
     """
 
     global grid
     global alphabet
+
+    debug_mode = True
+
+    alphabet = alphabet[0: len(grid) + 1]
+
+    for row in range(len(grid)):
+        print(alphabet[row], end=' ')
+        for col in range(len(grid[row])):
+            if grid[row][col] == 'O':
+                if debug_mode:
+                    print('O', end=' ')
+                else: 
+                    print('.', end=' ')
+            else:
+                print(grid[row][col], end=' ') 
+        print('')
+
+    print(' ', end=' ')
+    for x in range(len(grid[0])):
+        print(str(x), end=' ')
+    print('')
