@@ -30,6 +30,19 @@ def check_grid_and_place_ship(start_row, end_row, start_col, end_col):
     global grid
     global ship_positions
 
+    pos_valid = True
+    for r in range(start_row, end_row):
+        for c in range(start_col, end_col):
+            if grid[r][c] != '.':
+                pos_valid = False
+                break
+    if pos_valid:
+        ship_positions.append([start_row, end_row, start_col, end_col])
+        for r in range(start_row, end_row):
+            for c in range(start_col, end_col):
+                if grid[r][c] = 'O'
+    return pos_valid
+
 
 def attempt_ship_placement(row, col, direction, length):
     """
