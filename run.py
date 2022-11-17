@@ -15,7 +15,7 @@ ship_positions = [[]]
 # Variable for number of ships sunk
 ships_sunk = 0
 # Variable for bullets left
-bullets = 30
+missiles = 30
 # Variable for game over
 game_over = False
 # Variable for alphabet
@@ -134,6 +134,49 @@ def show_grid():
     for x in range(len(grid[0])):
         print(str(x), end=' ')
     print('')
+
+
+def valid_coordinate():
+    """
+    Checks if the coordinates entered by the player are inside the grid.
+    """
+
+    global grid
+    global alphabet
+
+    is_valid_coordinate = False
+    row = -1
+    col = -1
+
+    while is_valid_coordinate is False:
+        coordinate = input('Enter a coordinate within the grid: ')
+        coordinate = coordinate.upper()
+        if len(coordinate) <= 0 or len(coordinate) > 2:
+            print('Please enter only one valid row coordinate together with a valid column coordinate.')
+            continue
+        row = coordinate[0]
+        col = coordinate[1]
+        if not row.isalpha() or not col.isnumeric():
+            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            continue
+        row = alphabet.find(row)
+        if not (-1 < row < grid_size):
+            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            continue
+        col = int(col)
+        if not (-1 < col < grid_size):
+            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            continue
+        if grid[row][col] == '#' or grid[row][col] == 'X':
+            print('You have already attacked this position. Try another!')
+            continue
+        if grid[row][col] == '.' or grid[row][col] == 'O':
+            is_valid_coordinate = True
+
+    return row, col
+
+
+
 
 
 def run():
