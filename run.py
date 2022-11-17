@@ -176,6 +176,40 @@ def valid_coordinate():
     return row, col
 
 
+def check_if_destroyed(row, col):
+    """
+    Checks if all parts of a ship have been hit and increments number destroyed ships.
+    """
+
+    global grid
+    global ship_positions
+
+    for position in ship_positions:
+        start_row = position[0]
+        end_row = position[1]
+        start_col = position[2]
+        end_col = position[3]
+        if start_row <= row <= end_row and start_col <= col <= end_col:
+            for r in range(start_row, end_row):
+                for c in range(start_col, end_col):
+                    if grid[r][c] != 'X':
+                        return False
+    return True
+
+
+def shoot_missile():
+    """
+    Updates the grid and ship status based on where a missile was shot.
+    """
+
+    global grid
+    global ships_sunk
+    global missiles
+
+
+
+
+
 
 
 
