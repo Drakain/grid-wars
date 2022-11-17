@@ -9,7 +9,7 @@ grid = [[]]
 # Variable for grid size
 grid_size = 10
 # Variable for number of ships
-ships = 0
+ships = 5
 # Variable for ship positions
 ship_positions = [[]]
 # Variable for number of ships sunk
@@ -134,3 +134,20 @@ def show_grid():
     for x in range(len(grid[0])):
         print(str(x), end=' ')
     print('')
+
+
+def run():
+    """
+    Main function that runs the game.
+    """
+
+    global game_over
+
+    generate_grid()
+    show_grid()
+    check_grid_and_place_ship()
+    attempt_ship_placement()
+
+
+
+run()
