@@ -206,6 +206,24 @@ def shoot_missile():
     global ships_sunk
     global missiles
 
+    row, col = valid_coordinate()
+    print('')
+    print('--------------------')
+
+    if grid[row][col] == '.':
+        print('You missed...')
+        grid[row][col] = '#'
+    elif grid[row][col] == 'O':
+        print('A ship was hit!')
+        grid[row][col] = 'X'
+        if check_if_destroyed(row, col):
+            print('A ship has been completely destroyed!')
+            ships_sunk += 1
+        else:
+            print('A ship has been damaged.')
+
+    missiles -= 1
+
 
 
 
