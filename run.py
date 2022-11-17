@@ -82,6 +82,29 @@ def generate_grid():
     global ships
     global ship_positions
 
+    random.seed(time.time())
+
+    rows, cols = grid_size, grid_size
+
+    grid = []
+    for r in range(rows):
+        row = []
+        for c in range(cols):
+            row.append('.')
+        grid.append(row)
+
+    ships_placed = 0
+
+    ship_positions = []
+
+    while ships_placed != ships:
+        random_row = random.randint(0, rows - 1)
+        random_col = random.randint(0, cols - 1)
+        direction = random.choice(['up', 'down', 'right', 'left'])
+        ship_size = random.randint(3, 5)
+        if attempt_ship_placement(random_row, random_col, direction, ship_size):
+            ships_placed += 1
+
 
 def show_grid():
     """
