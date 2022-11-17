@@ -225,6 +225,24 @@ def shoot_missile():
     missiles -= 1
 
 
+def check_if_game_over():
+    """
+    Ends the game if all enemy ships have been sunk or if the player ran out of missiles.
+    """
+
+    global ships_sunk
+    global ships
+    global missiles
+    global game_over
+
+    if ships == ships_sunk:
+        print('Victory!')
+        game_over = True
+    elif missiles <= 0:
+        print('Mission failed! You ran out of missiles.')
+        game_over = True
+
+
 
 
 
