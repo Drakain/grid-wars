@@ -15,7 +15,7 @@ ship_positions = [[]]
 # Variable for number of ships sunk
 ships_sunk = 0
 # Variable for bullets left
-missiles = 30
+missiles = 45
 # Variable for game over
 game_over = False
 # Variable for alphabet
@@ -152,20 +152,20 @@ def valid_coordinate():
         coordinate = input('Enter a coordinate within the grid: ')
         coordinate = coordinate.upper()
         if len(coordinate) <= 0 or len(coordinate) > 2:
-            print('Please enter only one valid row coordinate together with a valid column coordinate.')
+            print('Enter only one row coordinate and one column coordinate.')
             continue
         row = coordinate[0]
         col = coordinate[1]
         if not row.isalpha() or not col.isnumeric():
-            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            print('Please enter a row letter (A-J) and a column number (0-9).')
             continue
         row = alphabet.find(row)
         if not (-1 < row < grid_size):
-            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            print('Please enter a row letter (A-J) and a column number (0-9).')
             continue
         col = int(col)
         if not (-1 < col < grid_size):
-            print('Please enter a letter (A-J) for row and a number (0-9) for column.')
+            print('Please enter a row letter (A-J) and a column number (0-9).')
             continue
         if grid[row][col] == '#' or grid[row][col] == 'X':
             print('You have already attacked this position. Try another!')
@@ -243,12 +243,6 @@ def check_if_game_over():
         game_over = True
 
 
-
-
-
-
-
-
 def run():
     """
     Main function that runs the game.
@@ -256,11 +250,19 @@ def run():
 
     global game_over
 
-    generate_grid()
-    show_grid()
-    check_grid_and_place_ship()
-    attempt_ship_placement()
+    print('------Welcome to Grid Wars------')
+    print('You have 45 missiles available to defeat 5 enemy ships.')
 
+    generate_grid()
+
+    while game_over is False:
+        show_grid()
+        print('Ships remaining: ' + str(ships - ships_sunk))
+        print('Missiles at your disposal: ' + str(missiles))
+        shoot_missile()
+        print('--------------------')
+        print('')
+        check_if_game_over()
 
 
 run()
