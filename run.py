@@ -46,7 +46,7 @@ def check_grid_and_place_ship(start_row, end_row, start_col, end_col):
 
 def attempt_ship_placement(row, col, direction, length):
     """
-    Attempts to place a ship on the grid based on direction with help from the above method.
+    Attempts to place a ship on the grid based on direction with help from the above function.
     """
 
     global grid_size
@@ -114,7 +114,7 @@ def show_grid():
     global grid
     global alphabet
 
-    debug_mode = True
+    debug_mode = False
 
     alphabet = alphabet[0: len(grid) + 1]
 
