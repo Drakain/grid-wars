@@ -220,7 +220,7 @@ def shoot_missile():
             print('A ship has been completely destroyed!')
             ships_sunk += 1
         else:
-            print('A ship has been damaged.')
+            print('An enemy ship has been damaged.')
 
     missiles -= 1
 

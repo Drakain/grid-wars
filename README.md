@@ -33,4 +33,14 @@ Happy coding!
 
 
 ## Deployment
-  * 
+  * Head to Heroku and click the "New" tab and select "Create new app"
+  * Choose a unique app name and click "Create app"
+  * Click to the "Settings" tab and then head down to the "Config vars" section
+  * Click "Reveal Config Vars" and add a Config Var called "PORT" (key) with a value of "8000" (value)
+  * Head down to the "Buildpacks" section and click "Add buildpack"
+  * Choose "Python" save the changes
+  * Add a second buildpack called "nodejs"
+  * Click the "Deploy" tab and go down to the "Deployment method" section
+  * Choose "GitHub" and then search for the project in the new section that appears
+  * Click the "Connect" button once the project has been found
+  * Choose either "Enable Automatic Deploys" in the "Automatic deploys" section or "Deploy Branch" in the "Manual Deploy" section
