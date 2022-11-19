@@ -149,7 +149,7 @@ def valid_coordinate():
     col = -1
 
     while is_valid_coordinate is False:
-        coordinate = input('Enter a coordinate within the grid: ')
+        coordinate = input('Enter a coordinate within the grid:\n')
         coordinate = coordinate.upper()
         if len(coordinate) <= 0 or len(coordinate) > 2:
             print('Enter only one row coordinate and one column coordinate.')
