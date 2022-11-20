@@ -44,9 +44,10 @@ def check_grid_and_place_ship(start_row, end_row, start_col, end_col):
     return pos_valid
 
 
-def attempt_ship_placement(row, col, direction, length):
+def ship_placement(row, col, direction, length):
     """
-    Attempts to place a ship on the grid based on direction with help from the above function.
+    Attempts to place a ship on the grid based on direction.
+    Uses the above function to help with ship placement.
     """
 
     global grid_size
@@ -71,10 +72,11 @@ def attempt_ship_placement(row, col, direction, length):
 
     return check_grid_and_place_ship(start_row, end_row, start_col, end_col)
 
-      
+
 def generate_grid():
     """
-    Generates a 10x10 grid and attempts to randomly place down different types of ships at different locations.
+    Generates a 10x10 grid and attempts to randomly place down enemy ships.
+    The ship sizes are randomly chosen.
     """
 
     global grid
@@ -102,7 +104,7 @@ def generate_grid():
         random_col = random.randint(0, cols - 1)
         direction = random.choice(['up', 'down', 'right', 'left'])
         ship_size = random.randint(3, 5)
-        if attempt_ship_placement(random_row, random_col, direction, ship_size):
+        if ship_placement(random_row, random_col, direction, ship_size):
             ships_placed += 1
 
 
@@ -124,10 +126,10 @@ def show_grid():
             if grid[row][col] == 'O':
                 if debug_mode:
                     print('O', end=' ')
-                else: 
+                else:
                     print('.', end=' ')
             else:
-                print(grid[row][col], end=' ') 
+                print(grid[row][col], end=' ')
         print('')
 
     print(' ', end=' ')
@@ -178,7 +180,8 @@ def valid_coordinate():
 
 def check_if_destroyed(row, col):
     """
-    Checks if all parts of a ship have been hit and increments number destroyed ships.
+    Checks if all parts of a ship have been hit.
+    Increments the number of destroyed ships each time a ship is destroyed.
     """
 
     global grid
@@ -227,7 +230,8 @@ def shoot_missile():
 
 def check_if_game_over():
     """
-    Ends the game if all enemy ships have been sunk or if the player ran out of missiles.
+    Ends the game if one of two things happen:
+    the player destroys all the enemy ships or the player runs out of missiles.
     """
 
     global ships_sunk
